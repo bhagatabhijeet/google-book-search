@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+//import logo from "./logo.svg";
+import "./App.css";
+import Nav from "./components/Nav/Nav";
+import Footer from "./components/Footer/Footer"
+import Home from "./pages/Home";
+import Saved from "./pages/Saved";
+import Search from "./pages/Search";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//console.log(process.env.REACT_APP_API_Key);
+
+function App () {
+    return (
+      <Router>
+        <div>
+        <Nav />
+        <Switch>
+        <Route exact path = {['/']}>
+            <Home />
+          </Route>
+          <Route exact path = {['/saved']}>
+            <Saved />
+          </Route>
+          <Route exact path = {['/search']}>
+            <Search />
+          </Route>
+        </Switch>
+        <Footer />
+        </div>
+      </Router>
+    );
 }
 
 export default App;
