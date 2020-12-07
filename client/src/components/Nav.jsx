@@ -36,7 +36,7 @@ export default function Nav() {
             aria-label="menu"
           >
             <Link href="/">
-              <img src={book} alt={book} height={40} />
+              <img src={book} alt={book} height={30} />
             </Link>
           </IconButton>
 

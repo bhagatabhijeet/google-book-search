@@ -13,7 +13,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="#ffffff">
+    <Typography variant="body2" style={{ color: "#ffffff" }}>
       {"Copyright © "}
       <Link
         color="inherit"
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     padding: theme.spacing(1, 1),
-    marginTop: "auto",
+    marginTop: 100,
     backgroundColor: "#2ba2ff",
     color: "#ffffff",
     width: "100%",
@@ -50,7 +50,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     flexWrap: "wrap",
     bottom: 0,
-    margin: "0 auto",
   },
   item: {
     display: "flex",
@@ -70,10 +69,10 @@ export default function Footer() {
 
   return (
     <footer>
-      <Grid Container className={classes.footer}>
+      <Grid container className={classes.footer}>
         <Grid
           item
-          xs={12}
+          xs={10}
           sm={6}
           style={{
             flexDirection: "column",
@@ -82,7 +81,7 @@ export default function Footer() {
           }}
         >
           <Grid item>
-            <h6>Powered By</h6>
+            <h4>Powered By</h4>
           </Grid>
           <Grid item>
             <Link color="inherit" href="https://socket.io/" target="_blank">
@@ -134,7 +133,7 @@ export default function Footer() {
 
         <Grid
           item
-          xs={12}
+          xs={10}
           sm={6}
           style={{
             flexDirection: "column",
@@ -143,7 +142,7 @@ export default function Footer() {
           }}
         >
           <Grid item>
-            <h6>Developed By</h6>
+            <h4>Developed By</h4>
             <Link
               color="inherit"
               href="https://github.com/bhagatabhijeet"
@@ -173,7 +172,7 @@ export default function Footer() {
 
         <Grid
           item
-          xs={12}
+          xs={10}
           sm={6}
           style={{
             flexDirection: "column",
@@ -182,7 +181,7 @@ export default function Footer() {
           }}
         >
           <Grid item>
-            <h6>GitHub</h6>
+            <h4>GitHub</h4>
             <Copyright />
           </Grid>
           <Grid item>

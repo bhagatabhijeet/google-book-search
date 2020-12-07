@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Jumbotron, Container, Card, Form, Button } from 'react-bootstrap'
 import axios from 'axios';
-import SearchedBookCard from "../components/SearchedBookCard/BookCard"
+import SearchedBookCard from "../components/BookCard"
 
 
 

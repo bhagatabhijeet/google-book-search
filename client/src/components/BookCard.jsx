@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
-import API from "../../utils/API";
+import API from "../utils/API";
 
 function SearchedBookCard (props) {
 
