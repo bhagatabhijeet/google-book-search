@@ -38,9 +38,9 @@ mongoose.connect(
 
 // Send every request to the React app
 // Define any API routes before this runs
-// app.get("*", function(req, res) {
-//   res.sendFile("./client/public/index.html");
-// });
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+})
 
 //socket
 io.on('connection', function (socket) {
