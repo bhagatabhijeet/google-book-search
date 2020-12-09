@@ -43,10 +43,10 @@ export default function Nav() {
           <Typography variant="h6" className={classes.title}>
             Google Books Search
           </Typography>
-          <Button color="inherit" href="/search">
+          <Button color="inherit" href="/search"className='btn' >
             Search
           </Button>
-          <Button color="inherit" href="/saved">
+          <Button color="inherit" href="/saved" className='btn'>
             Saved
           </Button>
         </Toolbar>

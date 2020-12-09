@@ -10,6 +10,8 @@ import Typography from "@material-ui/core/Typography";
 import SearchIcon from "@material-ui/icons/Search";
 import FindInPageIcon from "@material-ui/icons/FindInPage";
 import bookshelf from "../assets/bookshelf.jpg";
+import CustomTitle from "../components/animated/CustomTitle";
+import DancingBox from "../components/animated/DancingBox";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,35 +42,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Home() {
+function Home(props) {
   const classes = useStyles();
-
+  console.log(props.connecteUsers);
   return (
     <Container className={classes.container}>
       <CssBaseline />
       <Grid container={true} spacing={8} alignItems="center" justify="center">
         <Grid item xs={10} sm={10}>
-          <Spring
-            config={{ tension: 280, friction: 60, duration: 3000 }}
-            from={{ color: "#fff" }}
-            to={{ color: "black" }}
-          >
-            {(props) => (
-              <Typography
-                component="h1"
-                variant="h5"
-                style={{
-                  textAlign: "center",
-                  ...props,
-                  fontWeight: "600",
-                  color: "#35363a",
-                }}
-              >
-                Google Books Search!
-              </Typography>
-            )}
-          </Spring>
+          <CustomTitle />          
         </Grid>
+        {/* <Grid item xs={10} sm={5}>
+          <DancingBox type='user'/>  
+          </Grid> 
+          <Grid item xs={10} sm={5}>     
+          <DancingBox />       
+          </Grid>
+        </Grid> */}
         <Grid item xs={10} sm={5}>
           <Spring
             config={{ tension: 120, friction: 14 }}
@@ -89,6 +79,7 @@ function Home() {
                   startIcon={<SearchIcon />}
                   variant="outlined"
                   color="inherit"
+                  className="btn"
                 >
                   Search
                 </Button>
@@ -120,13 +111,14 @@ function Home() {
                   endIcon={<FindInPageIcon />}
                   variant="outlined"
                   color="inherit"
+                  className="btn"
                 >
                   Saved Search
                 </Button>
               </Box>
             )}
           </Spring>
-        </Grid>
+        </Grid>       
       </Grid>
     </Container>
   );

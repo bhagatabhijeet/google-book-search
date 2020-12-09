@@ -86,9 +86,9 @@ body {
   will-change: transform;
 }
 
-.script-bf-box:hover {
+/* .script-bf-box:hover {
   background: hotpink;
-}
+} */
 
 .animated-box{
   /* transform-origin:'top left'; */
@@ -100,6 +100,18 @@ body {
   text-align: center;
   display: flex;
   flex-direction: column;
+}
+
+.btn{
+  background-color: #2ba2ff !important;   
+  margin: 10px !important;
+  color: #fff !important;  
+  
+}
+
+.btn:hover{
+  background-color: #228adc !important;
+  color: #fff !important; 
 }
 
 .tempWrapper{
