@@ -20,17 +20,11 @@ module.exports = {
             console.log("Removed  : ", docs); 
             res.json(docs)
         } 
-      });
-      
-      
-      
-      
-      // .then(dbModel => dbModel.remove())
-      // .then(dbModel => res.json(dbModel))
-      // .catch(err => res.status(422).json(err));
+      });      
+
   },
   create: function(req, res) {
-    //console.log(req.body);
+    //console.log(req.body); //Retained for debugging
     db.Book
       .create(req.body)
       .then(dbModel => res.json(dbModel))

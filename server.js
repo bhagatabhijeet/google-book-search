@@ -47,24 +47,21 @@ io.on('connection', function (socket) {
   socketsCount++;
   console.log("new client connected",socketsCount);
   io.emit('connections_established',socketsCount);
-  // socket.on('connect',()=>{
-  //   console.log("someone connected!");
-  // });
+  
   socket.on("disconnect", () => {
     socketsCount--
     console.log("Client disconnected",socketsCount);
     io.emit('connection_disconnected',socketsCount);
-    // clearInterval(interval);
+    
   });
   socket.on("booksaved", (bookName,author) => {
     console.log(bookName,author);
     io.emit('booksaved',bookName,author);
-    // clearInterval(interval);
+    
   });
   socket.on("bookremoved", (bookName,author,bookid) => {
     console.log(bookName,author);
-    io.emit('bookremoved',bookName,author,bookid);
-    // clearInterval(interval);
+    io.emit('bookremoved',bookName,author,bookid);    
   });
   
 });

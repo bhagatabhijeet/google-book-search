@@ -5,9 +5,9 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import CustomTitle from "../components/animated/CustomTitle";
 import MUIBookCard from "../components/MuiBookCard";
-import API from '../utils/API';
-import {socket} from '../App';
-import {useHistory} from 'react-router-dom';
+import API from "../utils/API";
+import { socket } from "../App";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,26 +50,19 @@ function Search() {
   const [url, setUrl] = useState(``);
   const [saved, setSaved] = useState(false);
 
-  const handleSave=(bookData)=>{
-    // event.preventDefault();
+  const handleSave = (bookData) => {
     API.saveBook(bookData)
-    .then(res => {
-      console.log(res); 
-      setSaved(true);
-      socket.emit('booksaved',bookData.title,bookData.authors);
-      history.push("/saved");
-      // alert(`New book ${newSavedBookArray[0].volumeInfo.title} has been saved!`)
-  })
-  .catch(err => console.log(err));
-  }
-
-  function handleChange(event) {
-    event.preventDefault();
-  }
+      .then((res) => {
+        // console.log(res); //retained for debugging
+        setSaved(true);
+        socket.emit("booksaved", bookData.title, bookData.authors);
+        history.push("/saved");
+      })
+      .catch((err) => console.log(err));
+  };
 
   function handleSearch(event) {
-    event.preventDefault();
-    console.log("Submitted: " + searchTerm);
+    event.preventDefault();    
     setUrl(
       `https://books.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyCT4ndO_FO6f72PXHqey5q-SOSGNb7aS0U`
     );
@@ -82,17 +75,17 @@ function Search() {
       const result = await axios(url);
 
       const savedBooks = await API.getBooks();
-      const savedBookIds =savedBooks.data.map(s=>s.bookid);
-      result.data.items.map(element => {
-        if(savedBookIds.includes(element.id)){
-          element.alreadySaved=true;
-        return {...element};
-      }else{
-        element.alreadySaved=false;
-        return {...element};
-      }
+      const savedBookIds = savedBooks.data.map((s) => s.bookid);
+      result.data.items.map((element) => {
+        if (savedBookIds.includes(element.id)) {
+          element.alreadySaved = true;
+          return { ...element };
+        } else {
+          element.alreadySaved = false;
+          return { ...element };
+        }
       });
-      console.log(result.data.items) //retained for debugging
+      // console.log(result.data.items); //retained for debugging
       setItems(result.data.items);
     };
 
@@ -104,7 +97,7 @@ function Search() {
     return () => {
       setUrl("");
     };
-  }, [url,saved]);
+  }, [url, saved]);
 
   return (
     <Container className="main">
@@ -148,7 +141,6 @@ function Search() {
         </p>
 
         {items.map((b, index) => (
-          
           <MUIBookCard
             key={index}
             // description={b.volumeInfo.description}

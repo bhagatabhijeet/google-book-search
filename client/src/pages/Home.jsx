@@ -41,22 +41,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home(props) {
-  const classes = useStyles();
-  console.log(props.connecteUsers);
+  const classes = useStyles();  
   return (
     <Container className={classes.container}>
       <CssBaseline />
       <Grid container={true} spacing={8} alignItems="center" justify="center">
         <Grid item xs={10} sm={10}>
-          <CustomTitle />          
+          <CustomTitle />
         </Grid>
-        {/* <Grid item xs={10} sm={5}>
-          <DancingBox type='user'/>  
-          </Grid> 
-          <Grid item xs={10} sm={5}>     
-          <DancingBox />       
-          </Grid>
-        </Grid> */}
+
         <Grid item xs={10} sm={5}>
           <Spring
             config={{ tension: 120, friction: 14 }}
@@ -116,7 +109,7 @@ function Home(props) {
               </Box>
             )}
           </Spring>
-        </Grid>       
+        </Grid>
       </Grid>
     </Container>
   );

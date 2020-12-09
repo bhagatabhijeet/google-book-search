@@ -1,24 +1,19 @@
 import axios from "axios";
 
-const API={
+const API = {
   // Gets all books
-  getBooks:()=> {
+  getBooks: () => {
     return axios.get("/api/books");
   },
-  
+
   // Deletes the book with the given id
-  deleteBook:(id)=> {
+  deleteBook: (id) => {
     return axios.delete("/api/books/" + id);
   },
   // Saves a book to the database
-  saveBook:(bookData)=> {
+  saveBook: (bookData) => {
     return axios.post("/api/books", bookData);
-  }
-}
-  
+  },
+};
 
-  export default API;
-  // module.exports={
-  //   getBooks,deleteBook,saveBook
-  // }
-
+export default API;
