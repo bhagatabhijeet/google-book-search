@@ -61,6 +61,12 @@ io.on('connection', function (socket) {
     io.emit('booksaved',bookName,author);
     // clearInterval(interval);
   });
+  socket.on("bookremoved", (bookName,author,bookid) => {
+    console.log(bookName,author);
+    io.emit('bookremoved',bookName,author,bookid);
+    // clearInterval(interval);
+  });
+  
 });
 
 httpServer.listen(PORT, function() {

@@ -43,6 +43,12 @@ export default function CustomizedSnackbars() {
       setOpen(true);  
       console.log(bookName);
     });
+
+    socket.on('bookremoved',(bookName,author,id)=>{
+      setBook({bookName,author,id})   
+      setOpen(true);  
+      console.log(bookName);
+    });
   });
 
   // const handleClick = () => {
@@ -63,13 +69,13 @@ export default function CustomizedSnackbars() {
       {/* <Button variant="outlined" onClick={handleClick}>
         Open success snackbar
       </Button> */}
-      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose} TransitionComponent={TransitionLeft}
+      <Snackbar open={open} autoHideDuration={4000} onClose={handleClose} TransitionComponent={TransitionLeft}
       anchorOrigin={{ vertical:'top', horizontal:'center' }}
       className={classes.snackbar}
       >
         
         <div>
-          {`Book '${book.bookName}' by: ${book.author} was saved as favorite`}
+          {book.id?`Book(${book.id}) '${book.bookName}' by: ${book.author} was removed from saved books`:`Book '${book.bookName}' by: ${book.author} was saved as favorite`}
           </div>
         
       </Snackbar>
