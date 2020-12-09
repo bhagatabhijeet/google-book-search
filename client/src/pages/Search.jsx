@@ -6,6 +6,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import CustomTitle from "../components/animated/CustomTitle";
 import MUIBookCard from "../components/MuiBookCard";
 import API from '../utils/API';
+import {socket} from '../App';
+import {useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,9 +44,24 @@ const useStyles = makeStyles((theme) => ({
 
 function Search() {
   const classes = useStyles();
+  let history = useHistory();
   const [items, setItems] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [url, setUrl] = useState(``);
+  const [saved, setSaved] = useState(false);
+
+  const handleSave=(bookData)=>{
+    // event.preventDefault();
+    API.saveBook(bookData)
+    .then(res => {
+      console.log(res); 
+      setSaved(true);
+      socket.emit('booksaved',bookData.title,bookData.authors);
+      history.push("/saved");
+      // alert(`New book ${newSavedBookArray[0].volumeInfo.title} has been saved!`)
+  })
+  .catch(err => console.log(err));
+  }
 
   function handleChange(event) {
     event.preventDefault();
@@ -87,7 +104,7 @@ function Search() {
     return () => {
       setUrl("");
     };
-  }, [url]);
+  }, [url,saved]);
 
   return (
     <Container className="main">
@@ -142,6 +159,7 @@ function Search() {
             //     ? ""
             //     : b.volumeInfo.imageLinks.smallThumbnail
             // }
+            saveHandler={handleSave}
             data={b}
           />
         ))}

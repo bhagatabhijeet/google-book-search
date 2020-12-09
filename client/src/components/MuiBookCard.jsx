@@ -122,16 +122,7 @@ export default function MUIBookCard(props) {
       
   };
 
-  const handleSave=(event)=>{
-    event.preventDefault();
-    API.saveBook(bookData)
-    .then(res => {
-      console.log(res); 
-      socket.emit('booksaved',bookData.title,bookData.authors);
-      // alert(`New book ${newSavedBookArray[0].volumeInfo.title} has been saved!`)
-  })
-  .catch(err => console.log(err));
-  }
+  
 
   
   return (
@@ -183,7 +174,7 @@ export default function MUIBookCard(props) {
         <CardActions disableSpacing>
         <Tooltip title="Save Book">
           <span>
-          <IconButton aria-label="save" onClick={handleSave} disabled={props.data.alreadySaved} style={{color:props.data.alreadySaved?'red':'#202124'}}>
+          <IconButton aria-label="save" onClick={()=>props.saveHandler(bookData)} disabled={props.data.alreadySaved} style={{color:props.data.alreadySaved?'red':'#202124'}}>
             <FavoriteIcon />
           </IconButton>
           </span>
