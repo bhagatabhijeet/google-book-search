@@ -54,10 +54,10 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/saved">
+          <Route  path="/saved">
             <Saved />
           </Route>
-          <Route exact path="/search">
+          <Route path="/search">
             <Search />
           </Route>
         </Switch>
