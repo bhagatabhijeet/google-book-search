@@ -51,13 +51,13 @@ function App() {
         <NotificationsBar />
         <BookSaveNotification />        
         <Switch>
-          <Route exact path={["/"]}>
+          <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path={["/saved"]}>
+          <Route exact path="/saved">
             <Saved />
           </Route>
-          <Route exact path={["/search"]}>
+          <Route exact path="/search">
             <Search />
           </Route>
         </Switch>
