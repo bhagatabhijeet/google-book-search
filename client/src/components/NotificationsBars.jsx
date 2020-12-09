@@ -34,7 +34,7 @@ export default function NotificationBars(){
   return (
     <>
     <NotificationBar1/>
-    <NotificationBar2/>
+    {/* <NotificationBar2/> */}
     </>
   );
 }

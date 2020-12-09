@@ -45,10 +45,10 @@ export default function CustomizedSnackbars() {
     });
   });
 
-  const handleClick = () => {
-    // setOpen(true);
-    socket.emit('booksaved',"Abhi's book","Abhijeet");
-  };
+  // const handleClick = () => {
+  //   // setOpen(true);
+  //   socket.emit('booksaved',"Abhi's book","Abhijeet");
+  // };
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -60,16 +60,16 @@ export default function CustomizedSnackbars() {
 
   return (
     <div className={classes.root}>
-      <Button variant="outlined" onClick={handleClick}>
+      {/* <Button variant="outlined" onClick={handleClick}>
         Open success snackbar
-      </Button>
+      </Button> */}
       <Snackbar open={open} autoHideDuration={2000} onClose={handleClose} TransitionComponent={TransitionLeft}
       anchorOrigin={{ vertical:'top', horizontal:'center' }}
       className={classes.snackbar}
       >
         
         <div>
-          {book.bookName}
+          {`Book '${book.bookName}' by: ${book.author} was saved as favorite`}
           </div>
         
       </Snackbar>

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const http=require("http");
 const socketIo = require("socket.io");
@@ -17,29 +18,29 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serve up static assets (usually on heroku)
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/build"));
-// }
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 //Add routes, API and view
 app.use(routes);
 
 //Connect to the mongo db
-// mongoose.connect(
-//   process.env.MONGODB_URI || 'mongodb://localhost/googlebooks',
-//   {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useCreateIndex: true,
-//     useFindAndModify: false
-//   }
-// );
+mongoose.connect(
+  process.env.MONGODB_URI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
 
 // Send every request to the React app
 // Define any API routes before this runs
-// app.get("*", function(req, res) {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
+app.get("/", function(req, res) {
+  res.sendFile("./client/public/index.html");
+});
 
 //socket
 io.on('connection', function (socket) {

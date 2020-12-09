@@ -6,12 +6,10 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import SearchIcon from "@material-ui/icons/Search";
 import FindInPageIcon from "@material-ui/icons/FindInPage";
 import bookshelf from "../assets/bookshelf.jpg";
 import CustomTitle from "../components/animated/CustomTitle";
-import DancingBox from "../components/animated/DancingBox";
 
 const useStyles = makeStyles((theme) => ({
   root: {

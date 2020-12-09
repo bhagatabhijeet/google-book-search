@@ -5,6 +5,7 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import CustomTitle from "../components/animated/CustomTitle";
 import MUIBookCard from "../components/MuiBookCard";
+import API from '../utils/API';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,7 +63,19 @@ function Search() {
     console.log("I am in useeffect");
     const fetchData = async () => {
       const result = await axios(url);
-      // console.log(result.data) //retained for debugging
+
+      const savedBooks = await API.getBooks();
+      const savedBookIds =savedBooks.data.map(s=>s.bookid);
+      result.data.items.map(element => {
+        if(savedBookIds.includes(element.id)){
+          element.alreadySaved=true;
+        return {...element};
+      }else{
+        element.alreadySaved=false;
+        return {...element};
+      }
+      });
+      console.log(result.data.items) //retained for debugging
       setItems(result.data.items);
     };
 
@@ -118,16 +131,18 @@ function Search() {
         </p>
 
         {items.map((b, index) => (
+          
           <MUIBookCard
             key={index}
-            description={b.volumeInfo.description}
-            bookName={b.volumeInfo.title}
-            pageCount={b.volumeInfo.pageCount}
-            image={
-              typeof b.volumeInfo.imageLinks === "undefined"
-                ? ""
-                : b.volumeInfo.imageLinks.smallThumbnail
-            }
+            // description={b.volumeInfo.description}
+            // bookName={b.volumeInfo.title}
+            // pageCount={b.volumeInfo.pageCount}
+            // image={
+            //   typeof b.volumeInfo.imageLinks === "undefined"
+            //     ? ""
+            //     : b.volumeInfo.imageLinks.smallThumbnail
+            // }
+            data={b}
           />
         ))}
       </Paper>

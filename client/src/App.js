@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
@@ -7,15 +7,14 @@ import Saved from "./pages/Saved";
 import Search from "./pages/Search";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import DancingBox from "./components/animated/DancingBox";
 import NotificationsBar from "./components/NotificationsBars";
-import Snackbar from "@material-ui/core/Snackbar";
+import BookSaveNotification from "./components/animated/BookSaveNotification";
 import io from "socket.io-client";
 // import MuiAlert from '@material-ui/lab/Alert';
 // import io from 'socket.io-client';
 
 //console.log(process.env.REACT_APP_API_Key);
-export const socket = io(); //'http://localhost:3001'
+export const socket = io();//'http://localhost:3001');
 //     socket.on('connections_established',cons=>{
 //       setConnections(cons);
 //     });
@@ -49,7 +48,8 @@ function App() {
     <Router>
       {/* <div> */}
         <Nav />
-        <NotificationsBar />        
+        <NotificationsBar />
+        <BookSaveNotification />        
         <Switch>
           <Route exact path={["/"]}>
             <Home />
